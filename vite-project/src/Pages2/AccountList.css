@@ -1,0 +1,31 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  form {
+    max-width: 300px;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  /* Media Queries */
+  @media only screen and (max-width: 600px) {
+    form {
+      max-width: 200px;
+    }
+  }
+  

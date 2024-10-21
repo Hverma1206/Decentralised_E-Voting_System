@@ -1,0 +1,25 @@
+nav {
+    background-color: #3498db; /* Change the background color as needed */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 0;
+  }
+  
+  Link {
+    display: block;
+    padding: 15px; /* Adjust the padding for a larger clickable area */
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  Link:hover {
+    background-color: #2980b9; /* Change the hover background color as needed */
+  }
+  

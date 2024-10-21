@@ -1,0 +1,66 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .label2, .lable2 {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .innerBoxVote {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  
+  .regBtb, .resBtn {
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .regBtb:hover, .emerBtn:hover, .resBtn:hover {
+    /* width: 7em; */
+    font-weight: bold;
+  }
+  
+  .space {
+    margin-top: 20px;
+  }
+  
+  /* Media Queries */
+  @media only screen and (max-width: 600px) {
+    .form {
+      max-width: 300px;
+    }
+  
+    .innerBoxVote {
+      width: 100%;
+    }
+  
+    .space {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .regBtb, .emerBtn, .resBtn {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .regBtb, .emerBtn, .resBtn {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  

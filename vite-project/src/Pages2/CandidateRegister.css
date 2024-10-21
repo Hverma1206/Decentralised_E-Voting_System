@@ -1,0 +1,79 @@
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #3498db;
+  padding: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  margin: 0;
+}
+
+Link {
+  display: block;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+Link:hover {
+  background-color: #2980b9;
+}
+
+/* Additional Styling for Your Form */
+.form {
+  max-width: 600px; /* Increase the max-width for a wider form */
+  margin: auto;
+  margin-top: 20px;
+}
+
+.lable1 {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.innerBoxCand {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+.RegBtn {
+  background-color: #4caf50;
+  color: rgb(141, 232, 44);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 7px;
+  margin-bottom: 15px;
+}
+
+.RegBtn:hover {
+  background-color: #45a049;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .form {
+    max-width: 300px;
+  }
+
+  .innerBoxCand {
+    width: 100%;
+  }
+}
