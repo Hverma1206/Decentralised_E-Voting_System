@@ -10,52 +10,36 @@ const AccountList = ({ saveAccount }) => {
   useEffect(() => {
     async function allAccounts() {
       try {
-        const select = document.getElementById("selectNumber");
-        const options = await web3.eth.getAccounts();
-
-        for (let i = 0; i < options.length; i++) {
-          let opt = options[i];
-          let element = document.createElement("option");
-          element.textContent = opt;
-          element.value = opt;
-          select.appendChild(element);
-        }
-      } catch {
-        setProvider("Not connected");
+        const select = document.getElementById("selectAccount");
+        select.innerHTML = ""; // Clear previous accounts
+        const accounts = await web3.eth.getAccounts();
+        
+        accounts.forEach(account => {
+          const option = document.createElement("option");
+          option.value = account;
+          option.text = account;
+          select.appendChild(option);
+        });
+      } catch (error) {
+        console.error("Error fetching accounts: ", error);
       }
     }
-
-    web3 && allAccounts();
+    allAccounts();
   }, [web3]);
-
-  async function selectAccount() {
-    let selectedAccount = document.getElementById("selectNumber").value;
-
-    if (selectedAccount && selectedAccount !== "Select an account") {
-      saveAccount(selectedAccount);
-    }
-  }
 
   return (
     <>
       <Navigation />
-      <form action="lable10" id="myform">
-        <label htmlFor="">
-          <select
-            name="innerBox"
-            id="selectNumber"
-            onChange={selectAccount}
-          >
-            <option value=""></option>
-          </select>
-        </label>
-      </form>
+      <label htmlFor="selectAccount" className="label">Select an Account:</label>
+      <select id="selectAccount" onChange={(e) => saveAccount(e.target.value)}>
+        <option value="">Select Account</option>
+      </select>
     </>
   );
 };
 
 AccountList.propTypes = {
-  saveAccount: PropTypes.func.isRequired, // Change the prop type to func
+  saveAccount: PropTypes.func.isRequired, // Ensure correct type for saveAccount
 };
 
 export default AccountList;

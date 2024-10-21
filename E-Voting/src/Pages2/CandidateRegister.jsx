@@ -1,4 +1,3 @@
-import "./CandidateRegister";
 import { useContext } from "react";
 import { walletContext } from "../components/Wallet";
 import Navigation from "../components/Navigation";
@@ -7,35 +6,48 @@ import CandidateDisplay from "../components/CandidateDisplay";
 
 const CandidateRegister = ({ account }) => {
   const { contract } = useContext(walletContext);
+
   const candidateRegisteration = async (e) => {
     e.preventDefault();
     const name = document.querySelector("#name").value;
     const party = document.querySelector("#party").value;
     const age = document.querySelector("#age").value;
     const gender = document.querySelector("#gender").value;
+
     const partyData = {
       gender,
       party,
     };
-    const res = await fetch("http://localhost:3000/api/candidate-verify", {
+
+    const verificationRes = await fetch("http://localhost:3000/api/candidate-verify", {
       method: "POST",
       headers: {
-        "content-type": "applicaation/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(partyData),
     });
-    const data= await res.json();
-    console.log(data);
-  //   try {
-  //     await contract.methods
-  //       .candidateRegister(name, party, age, gender)
-  //       .send({ from: account, gas: 480000 });
-  //     alert("Candidate's registration successful");
-  //   } catch (error) {
-  //     console.error("Error registering candidate:", error);
-  //   }
+
+    const verificationData = await verificationRes.json();
+    console.log(verificationData);
+
+    if (verificationRes.ok) {
+      // If verification is successful, register the candidate
+      const registrationRes = await fetch("http://localhost:3000/api/register-candidate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, party, age, gender, account }),
+      });
+
+      const registrationData = await registrationRes.json();
+      console.log(registrationData);
+      alert(registrationData.message);
+    } else {
+      alert(verificationData.message);
+    }
   };
-  console.log(account);
+
   return (
     <>
       <Navigation />
@@ -57,7 +69,7 @@ const CandidateRegister = ({ account }) => {
         </label>
         <input type="text" className="innerBoxCand" id="gender" />
         <div>
-          <button type="onSubmit" className="RegBtn btn btn-success">
+          <button type="submit" className="RegBtn btn btn-success">
             Register
           </button>
         </div>
@@ -66,7 +78,9 @@ const CandidateRegister = ({ account }) => {
     </>
   );
 };
+
 CandidateRegister.propTypes = {
   account: PropTypes.node.isRequired,
 };
+
 export default CandidateRegister;
